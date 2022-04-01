@@ -56,8 +56,8 @@ $packageArgs = @{
   #validExitCodes= @(0) #please insert other valid exit codes here
 }
 
-Install-ChocolateyPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateypackage
-#Install-ChocolateyZipPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateyzippackage
+#Install-ChocolateyPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateypackage
+Install-ChocolateyZipPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateyzippackage
 ## If you are making your own internal packages (organizations), you can embed the installer or
 ## put on internal file share and use the following instead (you'll need to add $file to the above)
 #Install-ChocolateyInstallPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateyinstallpackage
