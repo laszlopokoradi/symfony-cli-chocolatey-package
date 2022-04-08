@@ -1,12 +1,20 @@
 ﻿$ErrorActionPreference = 'Stop';
 
-$softwareName = 'symfony-cli'
 $programFiles = (${env:ProgramFiles}, $null -ne ${env:ProgramFiles(x86)})[0]
 $installDir = "$programFiles\$softwareName"
+$baseURL    = "https://github.com/symfony-cli/symfony-cli/releases/download/"
 
-$url        = "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_386.zip"
-$url64      = "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_amd64.zip"
+$programFiles = (${env:ProgramFiles}, $null -ne ${env:ProgramFiles(x86)})[0]
+$installDir = $programFiles + "\" + $softwareName
 
+$checksumType = 'sha256'
+$checksum   = "3a620d5e97abf3d3b75b78eff3f134c7c592f9aed1fbdc404daa97f3d013f6f1"
+$fileName   = "symfony-cli_windows_386.zip"
+$checksum64 = "f78d0992e7f5ef04f22245a2c5cfc6de5518476c26e43d058856ed707df28b69"
+$fileName64 = "symfony-cli_windows_amd64.zip"
+
+$url        = $baseURL + "v" + $version + "/" + $fileName
+$url64      = $baseURL + "v" + $version + "/" + $fileName64
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -16,10 +24,10 @@ $packageArgs = @{
 
   softwareName  = $softwareName
 
-  checksum      = '3A620D5E97ABF3D3B75B78EFF3F134C7C592F9AED1FBDC404DAA97F3D013F6F1'
-  checksumType  = 'sha256'
-  checksum64    = 'F78D0992E7F5EF04F22245A2C5CFC6DE5518476C26E43D058856ED707DF28B69'
-  checksumType64= 'sha256'
+  checksum      = $checksum
+  checksumType  = $checksumType
+  checksum64    = $checksum64
+  checksumType64= $checksumType
 }
 
 Install-ChocolateyZipPackage @packageArgs

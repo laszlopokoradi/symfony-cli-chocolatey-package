@@ -3,7 +3,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>symfony-cli</id>
-    <version>5.4.5</version>
+    <version>
+      5.4.5
+      <!-- TODO insert new version-->
+    </version>
 
     <packageSourceUrl>https://github.com/lpokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
@@ -17,15 +20,24 @@
     <projectSourceUrl>https://github.com/symfony-cli/symfony-cli</projectSourceUrl>
     <tags>symfony-cli symfony</tags>
     <summary>The Symfony CLI tool</summary>
-    <description>The [Symfony binary] is a must-have tool when developing Symfony applications
-on your local machine. It provides:
+    <description>The [Symfony binary](https://symfony.com/download) is a must-have tool when developing Symfony applications on your local machine. It provides:
+      
+      * The best way to [create new Symfony applications](https://symfony.com/doc/current/setup.html#creating-symfony-applications);
+      * A powerful [local web server](https://symfony.com/doc/current/setup/symfony_server.html) to develop your projects with support for [TLS certificates](https://symfony.com/doc/current/setup/symfony_server.html#enabling-tls);
+      * A tool to [check for security vulnerabilities](https://symfony.com/doc/current/setup.html#security-checker);
+      * Seamless integration with [Platform.sh](https://symfony.com/cloud).
 
-* The best way to [create new Symfony applications];
-* A powerful [local web server] to develop your projects with support for [TLS certificates];
-* A tool to [check for security vulnerabilities];
-* Seamless integration with [Platform.sh].
+       ## Technical Requirements
+       
+       * Install PHP 8.0.2 or higher and these PHP extensions (which are installed and enabled by default in most PHP 8 installations): Ctype, iconv, PCRE, Session, SimpleXML, and Tokenizer;
+       * Install Composer, which is used to install PHP packages.
+
+       This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
-    <releaseNotes> * Update supported Platform.sh services (@fabpot)</releaseNotes>
+    <releaseNotes>
+      https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.5
+      <!-- TODO insert new version-->
+    </releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
