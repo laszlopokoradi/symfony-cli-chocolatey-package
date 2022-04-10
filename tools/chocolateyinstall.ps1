@@ -1,16 +1,14 @@
 ﻿$ErrorActionPreference = 'Stop';
+$softwareName = 'symfony-cli'
 
 $programFiles = (${env:ProgramFiles}, $null -ne ${env:ProgramFiles(x86)})[0]
 $installDir = "$programFiles\$softwareName"
 $baseURL    = "https://github.com/symfony-cli/symfony-cli/releases/download/"
 
-$programFiles = (${env:ProgramFiles}, $null -ne ${env:ProgramFiles(x86)})[0]
-$installDir = $programFiles + "\" + $softwareName
-
 $checksumType = 'sha256'
-$checksum   = "3a620d5e97abf3d3b75b78eff3f134c7c592f9aed1fbdc404daa97f3d013f6f1"
+$checksum   = "453b00c27c770ce7f16ad8215e4026ac8b4065f870b2c1b5cd66e2270895f496"
 $fileName   = "symfony-cli_windows_386.zip"
-$checksum64 = "f78d0992e7f5ef04f22245a2c5cfc6de5518476c26e43d058856ed707df28b69"
+$checksum64 = "6215248289dd53ca40ad5a79898a2bde4849a3842171d8a325f97956575eb48f"
 $fileName64 = "symfony-cli_windows_amd64.zip"
 
 $url        = $baseURL + "v" + $version + "/" + $fileName

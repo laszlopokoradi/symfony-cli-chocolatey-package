@@ -3,10 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>symfony-cli</id>
-    <version>
-      5.4.5
-      <!-- TODO insert new version-->
-    </version>
+    <version>5.4.6</version>
 
     <packageSourceUrl>https://github.com/lpokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
@@ -35,8 +32,13 @@
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
     <releaseNotes>
-      https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.5
-      <!-- TODO insert new version-->
+      [https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.6]
+    
+      * Update supported Platform.sh services (@fabpot)
+      * Up deps (@fabpot)
+      * Switch to local security checker v2 (@fabpot)
+      * Bump deps (@fabpot)
+      * Add --disable-exit-code to check:security (@fabpot)
     </releaseNotes>
   </metadata>
   <files>
