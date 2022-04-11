@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>symfony-cli</id>
-    <version>5.4.6</version>
+    <version>5.4.7</version>
 
     <packageSourceUrl>https://github.com/lpokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
@@ -14,7 +14,6 @@
     <iconUrl>https://symfony.com/logos/symfony_black_03.svg</iconUrl>
     <licenseUrl>https://github.com/symfony-cli/symfony-cli/blob/main/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/symfony-cli/symfony-cli</projectSourceUrl>
     <tags>symfony-cli symfony</tags>
     <summary>The Symfony CLI tool</summary>
     <description>The [Symfony binary](https://symfony.com/download) is a must-have tool when developing Symfony applications on your local machine. It provides:
@@ -32,13 +31,9 @@
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
     <releaseNotes>
-      [https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.6]
+      [https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.7]
     
-      * Update supported Platform.sh services (@fabpot)
-      * Up deps (@fabpot)
-      * Switch to local security checker v2 (@fabpot)
-      * Bump deps (@fabpot)
-      * Add --disable-exit-code to check:security (@fabpot)
+      * Remove usage of flex.symfony.com (@fabpot)
     </releaseNotes>
   </metadata>
   <files>
