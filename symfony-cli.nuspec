@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>symfony-cli</id>
-    <version>5.4.7</version>
+    <version>5.4.8</version>
 
     <packageSourceUrl>https://github.com/lpokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
@@ -31,9 +31,10 @@
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
     <releaseNotes>
-      [https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.7]
+      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.8)
     
-      * Remove usage of flex.symfony.com (@fabpot)
+      * Try to detect NixOS installation of composer, fix #123 (@tucksaun)
+      * Fix the PATH value when executing PHP, fix #124 (@tucksaun)
     </releaseNotes>
   </metadata>
   <files>

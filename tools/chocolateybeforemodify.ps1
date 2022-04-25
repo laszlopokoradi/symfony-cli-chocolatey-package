@@ -23,4 +23,3 @@ if ($actualPath -contains $installDir)
         Start-ChocolateyProcessAsAdmin "$cmd"
     }
 }
-
