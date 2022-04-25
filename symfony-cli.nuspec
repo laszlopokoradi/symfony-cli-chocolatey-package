@@ -4,14 +4,15 @@
   <metadata>
     <id>symfony-cli</id>
     <version>5.4.8</version>
-
     <packageSourceUrl>https://github.com/lpokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
-    
     <title>Symfony CLI</title>
     <authors>Symfony</authors>
-    <projectUrl>https://github.com/symfony-cli/symfony-cli</projectUrl>
+    <projectUrl>https://symfony.com</projectUrl>
     <iconUrl>https://symfony.com/logos/symfony_black_03.svg</iconUrl>
+    <bugTrackerUrl>https://github.com/symfony-cli/symfony-cli/issues</bugTrackerUrl>
+    <docsUrl>https://symfony.com/doc/current/index.html</docsUrl>
+    <projectSourceUrl>https://github.com/symfony-cli/symfony-cli</projectSourceUrl>
     <licenseUrl>https://github.com/symfony-cli/symfony-cli/blob/main/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <tags>symfony-cli symfony</tags>
@@ -36,6 +37,7 @@
       * Try to detect NixOS installation of composer, fix #123 (@tucksaun)
       * Fix the PATH value when executing PHP, fix #124 (@tucksaun)
     </releaseNotes>
+    
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
