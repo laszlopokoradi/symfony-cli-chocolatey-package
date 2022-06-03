@@ -1,12 +1,13 @@
 ﻿$ErrorActionPreference = 'Stop'
 
 $programFiles = (${env:ProgramFiles}, $null -ne ${env:ProgramFiles(x86)})[0]
-$installDir = "$programFiles\$ChocolateyPackageName"
+$installDir = "$programFiles\$env:ChocolateyPackageName"
+
 $baseURL    = "https://github.com/symfony-cli/symfony-cli/releases/download/"
 
 $checksumType = 'sha256'
-$checksum32 = "de330ef30ed5d53f974d9c95b241ec92f2d357f10639da1054c73f46396c768a"
-$checksum64 = "7a658edb9b30b1cd0792508bccfaf466157b6bbfffaec2e43f362fbd51a1664b"
+$checksum32 = "966d7b18d8c02f3236fa2e2a7336ea846c5b62f611c4284b4536754402042f24"
+$checksum64 = "f7a7898788375c3c311addb6c38962e89b442a45c0c6c7c5257947026a1a5438"
 $fileName32 = "symfony-cli_windows_386.zip"
 $fileName64 = "symfony-cli_windows_amd64.zip"
 
