@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>symfony-cli</id>
-    <version>5.4.10</version>
+    <version>5.4.11</version>
     <packageSourceUrl>https://gitlab.com/laszlo.pokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
     <title>Symfony CLI</title>
@@ -32,17 +32,11 @@
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
     <releaseNotes>
-      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.8)
+      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.11)
     
-      * feat: add check for docker compose plugin (@ArnaudLier)
-      * chore: Update supported Platform.sh services (@github-actions[bot])
-      * Update supported Platform.sh services (@tucksaun)
-      * Rework PATH_INFO computation (@tucksaun)
-      * Fix tests after 15a9100 (@tucksaun)
-      * Fix misleading wording (@tucksaun)
-      * Fix docker-compose usage when doing a book checkout (@fabpot)
-      * Bump deps (@fabpot)
-       * Add automatic update of the generated code (@tucksaun)
+      * Remove Go Fish support as it has been deprecated (@fabpot)
+      * Fix typo (@fabpot)
+      * Add Cloudsmith support (@fabpot)
     </releaseNotes>
     
   </metadata>
