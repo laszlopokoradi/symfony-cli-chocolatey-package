@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>symfony-cli</id>
-    <version>5.4.11</version>
+    <version>5.4.12</version>
     <packageSourceUrl>https://gitlab.com/laszlo.pokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
     <title>Symfony CLI</title>
@@ -32,13 +32,18 @@
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
     <releaseNotes>
-      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.11)
+      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.12)
     
+      * chore: Update supported Platform.sh services (@github-actions[bot])
+      * chore: Update supported Platform.sh services (@github-actions[bot])
+      * chore: Update supported Platform.sh services (@github-actions[bot])
+      * chore: Update supported Platform.sh services (@github-actions[bot])
       * Remove Go Fish support as it has been deprecated (@fabpot)
       * Fix typo (@fabpot)
+      * Fix typo (@fabpot)
+      * Append a trailing slash to Elasticsearch URL, fix #154 (@tucksaun)
       * Add Cloudsmith support (@fabpot)
     </releaseNotes>
-    
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
