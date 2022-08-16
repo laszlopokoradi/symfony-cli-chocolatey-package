@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>symfony-cli</id>
-    <version>5.4.12</version>
+    <version>5.4.13</version>
     <packageSourceUrl>https://gitlab.com/laszlo.pokoradi/symfony-cli-chocolatey-package</packageSourceUrl>   
     <owners>Laszlo Pokoradi</owners>
     <title>Symfony CLI</title>
@@ -32,17 +32,18 @@
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
     <releaseNotes>
-      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.12)
+      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.4.13)
     
       * chore: Update supported Platform.sh services (@github-actions[bot])
       * chore: Update supported Platform.sh services (@github-actions[bot])
       * chore: Update supported Platform.sh services (@github-actions[bot])
-      * chore: Update supported Platform.sh services (@github-actions[bot])
-      * Remove Go Fish support as it has been deprecated (@fabpot)
-      * Fix typo (@fabpot)
-      * Fix typo (@fabpot)
-      * Append a trailing slash to Elasticsearch URL, fix #154 (@tucksaun)
-      * Add Cloudsmith support (@fabpot)
+      * Validate the versions of the supported services (@)
+      * Update deps (@fabpot)
+      * Import previous closed source installer (@tucksaun)
+      * Fix version check in local:new when cloning the book (@tucksaun)
+      * Fix Composer detection when composer.phar is present in the current directory, fix #150 (@tucksaun)
+      * Bump deps (@fabpot)
+      * Adapt installer for Symfony CLI v5 (@tucksaun)
     </releaseNotes>
   </metadata>
   <files>

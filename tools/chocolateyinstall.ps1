@@ -6,8 +6,8 @@ $installDir = "$programFiles\$env:ChocolateyPackageName"
 $baseURL    = "https://github.com/symfony-cli/symfony-cli/releases/download/"
 
 $checksumType = 'sha256'
-$checksum32 = "07c8472a20c3218ac3140d5fc2fca52de6c49ace32e27d7978d096464fc92883"
-$checksum64 = "b8f59ff03810546022bd74a8db4c69d81a7a9eac51ff2fd26ee7b54c94c77dbe"
+$checksum32 = "695601fad39e8849a5cdd94e499a10a3d237246864f81fe1e5bcfdb7675d7641"
+$checksum64 = "6043bd9ec37f5bae52710c37d6561e5dbdefe3f59bc3af9b331295a355550a67"
 $fileName32 = "symfony-cli_windows_386.zip"
 $fileName64 = "symfony-cli_windows_amd64.zip"
 
