@@ -1,0 +1,32 @@
+name: Update symfony-cli choco package
+on: workflow_dispatch
+jobs:
+  Update-Temurin-Packages:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install au
+        run: Set-Service wuauserv -StartupType Manual; choco install -y au wormies-au-helpers
+      - name: Run update script
+        run: cd .\symfony-cli\; .\update.ps1; ls *.nupkg
+        shell: powershell
+      - uses: actions/upload-artifact@master
+        with:
+          name: nupkg-files
+          path: symfony-cli/*.nupkg
+  Push-Temurin-Packages:
+    runs-on: windows-latest
+    environment: 'Push-Packages'
+    needs: Update-Temurin-Packages
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: nupkg-files
+      - name: Set API key
+        env:
+          CHOCOLATEY_API_KEY: ${{ secrets.CHOCOLATEY_API_KEY }}
+        run: choco apikey --key "$env:CHOCOLATEY_API_KEY" --source https://push.chocolatey.org/ CHOCOLATEY_API_KEY
+      - name: Push packages
+        run: ls *.nupkg; Get-ChildItem -Filter *.nupkg | Foreach-Object { 	choco push $_ --source https://push.chocolatey.org/}
+        shell: powershell
