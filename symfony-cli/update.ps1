@@ -29,9 +29,12 @@ function global:au_SearchReplace {
 function global:au_GetLatest {
     $download_page = Invoke-WebRequest -Uri $latestRelease
 
-    $checksum32   = $download_page.links | ? href -match '.msi$' | % href | select -First 1
-    $checksum64   = $url64 -replace 'x64.msi$', 'x86.msi'
-    $version = (Split-Path ( Split-Path $url32 ) -Leaf).Substring(1)
+    $version = $download_page.Headers | Select-Object -First 1
+    Write-Host $download_page.ParsedHtml.getElementsByTagName("h1")
+
+    $checksum32   = "1" #$download_page.links | ? href -match '.msi$' | % href | select -First 1
+    $checksum64   = "2" #$url64 -replace 'x64.msi$', 'x86.msi'
+    #$version = "5.5.2#(Split-Path ( Split-Path $url32 ) -Leaf).Substring(1)
 
     @{
         Checksum32   = $checksum32
