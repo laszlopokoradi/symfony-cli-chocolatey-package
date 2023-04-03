@@ -1,41 +1,51 @@
 import-module au
-
-$latestRelease = 'https://github.com/symfony-cli/symfony-cli/releases/latest'
+$githubHost = 'https://github.com'
+$latestRelease = $githubHost + '/symfony-cli/symfony-cli/releases'
 
 function global:au_SearchReplace {
-    $releaseNotes = """
-    [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/$(Latest.Version))
-
-    * chore: Update supported Platform.sh services (@github-actions[bot])
-    * chore: Update supported Platform.sh services (@github-actions[bot])
-    * Fix inconsistent error message in book requirements check, fix #287 (@tucksaun)
-    * Bump deps (@fabpot)
-    * Bump deps (@fabpot)
-    * Add COMPOSER_MEMORY_LIMIT=-1 when running Composer (@tucksaun)
-    """
-
    @{
+        ".\symfony-cli.nuspec" = @{
+            "(?i)(^\s*\<version\>).*(\<\/version\>)"           = "`${1}$($Latest.Version)`${2}"
+        }
         ".\tools\chocolateyInstall.ps1" = @{
             "(?i)(^\s*checksum\s*=\s*)('.*')"   = "`$1'$($Latest.Checksum32)'"
             "(?i)(^\s*checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
         }
-        ".\symfony-cli.nuspec" = @{
-            "(?i)(^\s*\<version\>).*(\<\/version\>)"           = "`${1}$($Latest.Version)`${2}"
-            "(?i)(^\s*\<releaseNotes\>).*(\<\/releaseNotes\>)"           = "`${1}$($releaseNotes)`${2}"
-        }
+        
     }
 }
 
 function global:au_GetLatest {
     $download_page = Invoke-WebRequest -Uri $latestRelease
 
-    $version = $download_page.Headers | Select-Object -First 1
-    Write-Host $download_page.ParsedHtml.getElementsByTagName("h1")
+    $latestChecksumFileLink = $download_page.Links | Where-Object href -match 'checksums.txt$' | ForEach-Object href | select -First 1
 
-    $checksum32   = "1" #$download_page.links | ? href -match '.msi$' | % href | select -First 1
-    $checksum64   = "2" #$url64 -replace 'x64.msi$', 'x86.msi'
-    #$version = "5.5.2#(Split-Path ( Split-Path $url32 ) -Leaf).Substring(1)
+    # Define a regular expression pattern to match the version number
+    $pattern = "v(\d+\.\d+\.\d+)"
+    # Perform the regular expression match
+    $match = [regex]::Match($latestChecksumFileLink, $pattern)
+    # Extract the version number from the match
+    $version = $match.Groups[1].Value
 
+
+    $latestChecksumFile = Invoke-WebRequest -Uri $githubHost$latestChecksumFileLink
+
+    $filename32 = "symfony-cli_windows_386.zip"
+    $filename64 = "symfony-cli_windows_amd64.zip"
+
+    # Define a regular expression pattern to match the checksum and filename
+    $pattern = "^(?<checksum>[0-9a-fA-F]+)\s+(?<filename>.*?)$"
+    # Perform the regular expression match on each line of the text
+    $latestChecksumFile -split "`n" | ForEach-Object {
+        $match = [regex]::Match($_, $pattern)
+        if ($match.Success -and $match.Groups["filename"].Value -eq $filename32) {
+            $checksum32 = $match.Groups["checksum"].Value
+        }
+        if ($match.Success -and $match.Groups["filename"].Value -eq $filename64) {
+            $checksum64 = $match.Groups["checksum"].Value
+        }
+    }
+    
     @{
         Checksum32   = $checksum32
         Checksum64   = $checksum64

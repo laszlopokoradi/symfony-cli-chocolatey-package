@@ -32,14 +32,7 @@
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
     <releaseNotes>
-      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/v5.5.2)
-
-        * chore: Update supported Platform.sh services (@github-actions[bot])
-        * chore: Update supported Platform.sh services (@github-actions[bot])
-        * Fix inconsistent error message in book requirements check, fix #287 (@tucksaun)
-        * Bump deps (@fabpot)
-        * Bump deps (@fabpot)
-        * Add COMPOSER_MEMORY_LIMIT=-1 when running Composer (@tucksaun)
+      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/$(Latest.Version))
     </releaseNotes>
   </metadata>
   <files>
