@@ -1,7 +1,7 @@
 name: Update symfony-cli choco package
 on: workflow_dispatch
 jobs:
-  Update-Temurin-Packages:
+  Update-SymfonyCLI-Packages:
     runs-on: windows-latest
     steps:
       - name: Check out repository code
@@ -15,10 +15,10 @@ jobs:
         with:
           name: nupkg-files
           path: symfony-cli/*.nupkg
-  Push-Temurin-Packages:
+  Push-SymfonyCLI-Packages:
     runs-on: windows-latest
     environment: 'Push-Packages'
-    needs: Update-Temurin-Packages
+    needs: Update-SymfonyCLI-Packages
     steps:
       - uses: actions/download-artifact@master
         with:
