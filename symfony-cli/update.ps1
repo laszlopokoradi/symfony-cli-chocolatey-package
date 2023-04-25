@@ -5,11 +5,12 @@ $latestRelease = $githubHost + '/symfony-cli/symfony-cli/releases'
 function global:au_SearchReplace {
    @{
         ".\symfony-cli.nuspec" = @{
-            "(?i)(^\s*\<version\>).*(\<\/version\>)"           = "`${1}$($Latest.Version)`${2}"
+            "(?i)(^\s*\<version\>).*(\<\/version\>)" = "`${1}$($Latest.Version)`${2}"
+            "(?i)(^\s*\<releaseNotes\>).*(\<\/releaseNotes\>)" = "`${1}[Changelog]($latestRelease/tag/v$($Latest.Version))`${2}"
         }
-        ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(^\s*checksum\s*=\s*)('.*')"   = "`$1'$($Latest.Checksum32)'"
-            "(?i)(^\s*checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
+        ".\tools\chocolateyinstall.ps1" = @{
+            "(^[$]checksum32\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
+            "(^[$]checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
         }    
     }
 }
@@ -29,7 +30,7 @@ function global:au_GetLatest {
     $checksum32 = Get-ChecksumFor -checksumFile $latestChecksumFile -fileName $filename32
     $checksum64 = Get-ChecksumFor -checksumFile $latestChecksumFile -fileName $filename64
 
-    @{
+    return @{
         Checksum32   = $checksum32
         Checksum64   = $checksum64
         Version = $version
@@ -66,4 +67,4 @@ function Get-ChecksumFor {
     }
 }
 
-update
+update -ChecksumFor none

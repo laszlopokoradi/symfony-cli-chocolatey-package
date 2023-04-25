@@ -7,8 +7,8 @@ $baseURL    = "https://github.com/symfony-cli/symfony-cli/releases/download/"
 
 $checksumType = 'sha256'
 
-$checksum32 = "2378bdf1894cb053371395807fcf4e501023247384c8e82f1ad494c76bfc2609"
-$checksum64 = "40efcec79577d9eb89de7eb62d097dcbfa0565989517ac6ffb453ed3123fde61"
+$checksum32 = '2378bdf1894cb053371395807fcf4e501023247384c8e82f1ad494c76bfc2609'
+$checksum64 = '40efcec79577d9eb89de7eb62d097dcbfa0565989517ac6ffb453ed3123fde61'
 
 $fileName32 = "symfony-cli_windows_386.zip"
 $fileName64 = "symfony-cli_windows_amd64.zip"

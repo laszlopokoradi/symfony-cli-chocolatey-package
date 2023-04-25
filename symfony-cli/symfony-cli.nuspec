@@ -31,9 +31,7 @@
 
        This package **does not** depend on the [PHP](https://community.chocolatey.org/packages/php) or [Composer Setup](https://community.chocolatey.org/packages/composer) package. 
     </description>
-    <releaseNotes>
-      [Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/$(Latest.Version))
-    </releaseNotes>
+    <releaseNotes>[Changelog](https://github.com/symfony-cli/symfony-cli/releases/tag/$(Latest.Version))</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
