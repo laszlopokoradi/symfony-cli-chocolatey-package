@@ -10,7 +10,7 @@ jobs:
         run: Set-Service wuauserv -StartupType Manual; choco install -y au wormies-au-helpers
       - name: Run update script
         run: cd .\symfony-cli\; .\update.ps1; ls *.nupkg
-        shell: powershell
+        shell: pwsh
       - uses: actions/upload-artifact@master
         with:
           name: nupkg-files
@@ -29,4 +29,4 @@ jobs:
         run: choco apikey --key "$env:CHOCOLATEY_API_KEY" --source https://push.chocolatey.org/
       - name: Push packages
         run: ls *.nupkg; Get-ChildItem -Filter *.nupkg | Foreach-Object { 	choco push $_ --source https://push.chocolatey.org/}
-        shell: powershell
+        shell: pwsh
