@@ -1,8 +1,8 @@
 import-module au
-$githubHost = 'https://github.com'
-$latestRelease = $githubHost + '/symfony-cli/symfony-cli/releases'
 
 function global:au_SearchReplace {
+    $latestRelease = 'https://github.com/symfony-cli/symfony-cli/releases'
+
    @{
         ".\symfony-cli.nuspec" = @{
             "(?i)(^\s*\<version\>).*(\<\/version\>)" = "`${1}$($Latest.Version)`${2}"
@@ -16,13 +16,18 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-    $download_page = Invoke-WebRequest -Uri $latestRelease
+    $apiUrl = 'https://api.github.com/repos/symfony-cli/symfony-cli/releases/latest'
+    $release = Invoke-RestMethod -Uri $apiUrl
 
-    $latestChecksumFileLink = $download_page.Links | Where-Object href -match 'checksums.txt$' | ForEach-Object href | Select-Object -First 1
+    $version = $release.tag_name -replace '^v', ''
 
-    $version = Get-VersionFromLatestChecksumFileLink -latestChecksumFileLink $latestChecksumFileLink
+    $checksumAsset = $release.assets | Where-Object { $_.name -eq 'checksums.txt' }
+    if (-not $checksumAsset) {
+        throw "Checksums file not found in latest release"
+    }
 
-    $latestChecksumFile = Invoke-WebRequest -Uri $githubHost$latestChecksumFileLink
+    $checksumUrl = $checksumAsset.browser_download_url
+    $latestChecksumFile = Invoke-WebRequest -Uri $checksumUrl
 
     $filename32 = "symfony-cli_windows_386.zip"
     $filename64 = "symfony-cli_windows_amd64.zip"
@@ -35,20 +40,6 @@ function global:au_GetLatest {
         Checksum64   = $checksum64
         Version = $version
     }
-}
-
-function Get-VersionFromLatestChecksumFileLink {
-
-    param(
-        $latestChecksumFileLink
-    )
-
-    # Define a regular expression pattern to match the version number
-    $pattern = "v(\d+\.\d+\.\d+)"
-    # Perform the regular expression match
-    $match = [regex]::Match($latestChecksumFileLink, $pattern)
-    # Extract the version number from the match
-    return $match.Groups[1].Value
 }
 
 function Get-ChecksumFor {
